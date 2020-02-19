@@ -59,10 +59,15 @@ public class Equipo {
         }
         //If there is more than one player with the same name ask to which one add a stat.
         if (indexEncontrados.size() > 1) {
+            
+            for(int i = 0; i<indexEncontrados.size();i++)
+            {
+                indexEncontrados.set(i,(indexEncontrados.get(i)+1)) ;
+            }
    
             System.out.println("Nombre repetido, seleccione a que jugador desea sumarle la estadística" +indexEncontrados); //Corregir index desplazado
             String opcion = sc.nextLine();
-            index = (Integer.parseInt(opcion) - 2);
+            index = (Integer.parseInt(opcion) - 1);
         //If there is not players with this name.
         }else if(indexEncontrados.size() == 0) {
             index = 999; // 
