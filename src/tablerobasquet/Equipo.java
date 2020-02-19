@@ -40,7 +40,7 @@ public class Equipo {
             do {
                 System.out.println("Indique el nombre del jugador número " + (i + 1));
                 nombre = sc.nextLine();
-                jugadores.add(new Jugador(nombre));
+                jugadores.add(new Jugador(nombre,0,0));
             } while (nombre.isEmpty());
         }
     }
@@ -54,17 +54,18 @@ public class Equipo {
         //Store all the indexes of the players who matches with String jugador
         for (int i = 0; i < jugadores.size(); i++) {
             if (jugador.equalsIgnoreCase(jugadores.get(i).getNombre())) {
-                indexEncontrados.add(jugadores.indexOf(jugadores.get(i)) + 1);
+                indexEncontrados.add(jugadores.indexOf(jugadores.get(i)));
             }
         }
         //If there is more than one player with the same name ask to which one add a stat.
         if (indexEncontrados.size() > 1) {
-            System.out.println("Nombre repetido, seleccione a que jugador desea sumarle la estadística" + indexEncontrados);
+   
+            System.out.println("Nombre repetido, seleccione a que jugador desea sumarle la estadística" +indexEncontrados); //Corregir index desplazado
             String opcion = sc.nextLine();
-            index = (Integer.parseInt(opcion) - 1);
+            index = (Integer.parseInt(opcion) - 2);
         //If there is not players with this name.
         }else if(indexEncontrados.size() == 0) {
-            index = 999; 
+            index = 999; // 
         }
         //If there is only one player with this name.
         else{
@@ -83,12 +84,11 @@ public class Equipo {
         else
         {
             jugadores.get(index).setPuntos(jugadores.get(index).getPuntos() + puntos);
-        } 
-        
+        }   
         
     }
 
-    ///Receive the index of the player and add a foul.
+    //Receive the index of the player and add a foul.
     public void sumarFaltas(String jugador) {
         int index = buscarJugador(jugador);
         jugadores.get(index).setFaltas(jugadores.get(index).getFaltas() + 1);
@@ -104,7 +104,7 @@ public class Equipo {
             puntosTotales += jugadores.get(i).getPuntos();
             i++;
         }
-        System.out.println("Los puntos del equipo " + numeroEquipo + " son: " + puntosTotales);
+        System.out.println("Los puntos del equipo " + numeroEquipo + " son: " + puntosTotales + '\n');
 
     }
 }

@@ -6,6 +6,13 @@ public class Jugador {
     private String nombre;
     private int puntos;
     private int faltas;
+    
+    public Jugador(String nombre, int puntos, int faltas)
+    {
+        this.nombre = nombre;
+        this.puntos = puntos;
+        this.faltas = faltas;
+    }
 
     //Getters Setters
     public void setNombre(String nombre) {
